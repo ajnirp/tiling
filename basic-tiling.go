@@ -28,19 +28,17 @@ func main() {
 	for row := 0; row < numRows; row++ {
 		for col := 0; col < numRows; col++ {
 			// In each cell, the line goes from left to right. It either starts
-            // from the top left or the bottom left, and ends respectively at
-            // the bottom right or the top right.
+			// from the top left or the bottom left, and ends respectively at
+			// the bottom right or the top right.
 			startsFromTop := true
 			if rand.Intn(2) == 1 {
 				startsFromTop = false
 			}
 
-			const (
-				leftX   float64 = col * cellSide
-				rightX  float64 = (col + 1) * cellSide
-				topY    float64 = row * cellSide
-				bottomY float64 = (row + 1) * cellSide
-			)
+			leftX := float64(col * cellSide)
+			rightX := float64((col + 1) * cellSide)
+			topY := float64(row * cellSide)
+			bottomY := float64((row + 1) * cellSide)
 
 			if startsFromTop {
 				context.DrawLine(leftX, topY, rightX, bottomY)
